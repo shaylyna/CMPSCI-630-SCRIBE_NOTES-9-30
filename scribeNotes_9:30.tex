@@ -1,0 +1,212 @@
+\documentclass[twoside]{article}
+\setlength{\oddsidemargin}{0.25 in}
+\setlength{\evensidemargin}{-0.25 in}
+\setlength{\topmargin}{-0.6 in}
+\setlength{\textwidth}{6.5 in}
+\setlength{\textheight}{8.5 in}
+\setlength{\headsep}{0.75 in}
+\setlength{\parindent}{0 in}
+\setlength{\parskip}{0.1 in}
+
+\usepackage{graphicx}
+\usepackage{url}
+
+%
+% The following commands sets up the lecnum (lecture number)
+% counter and make various numbering schemes work relative
+% to the lecture number.
+%
+\newcounter{lecnum}
+\renewcommand{\thepage}{\thelecnum-\arabic{page}}
+\renewcommand{\thesection}{\thelecnum.\arabic{section}}
+\renewcommand{\theequation}{\thelecnum.\arabic{equation}}
+\renewcommand{\thefigure}{\thelecnum.\arabic{figure}}
+\renewcommand{\thetable}{\thelecnum.\arabic{table}}
+\newcommand{\dnl}{\mbox{}\par}
+
+%
+% The following macro is used to generate the header.
+%
+\newcommand{\lecture}[4]{
+  \pagestyle{myheadings}
+  \thispagestyle{plain}
+  \newpage
+  \setcounter{lecnum}{#1}
+  \setcounter{page}{1}
+  \noindent
+  \begin{center}
+  \framebox{
+     \vbox{\vspace{2mm}
+   \hbox to 6.28in { {\bf CMPSCI~630~~~Systems
+                       \hfill Fall 2014} }
+      \vspace{4mm}
+      \hbox to 6.28in { {\Large \hfill Lecture #1  \hfill} }
+%       \hbox to 6.28in { {\Large \hfill Lecture #1: #2  \hfill} }
+      \vspace{2mm}
+      \hbox to 6.28in { {\it Lecturer: #3 \hfill Scribes: #4} }
+     \vspace{2mm}}
+  }
+  \end{center}
+  \markboth{Lecture #1: #2}{Lecture #1: #2}
+  \vspace*{4mm}
+}
+
+%
+% Convention for citations is authors' initials followed by the year.
+% For example, to cite a paper by Leighton and Maggs you would type
+% \cite{LM89}, and to cite a paper by Strassen you would type \cite{S69}.
+% (To avoid bibliography problems, for now we redefine the \cite command.)
+%
+\renewcommand{\cite}[1]{[#1]}
+
+% \input{epsf}
+
+%Use this command for a figure; it puts a figure in wherever you want it.
+%usage: \fig{NUMBER}{FIGURE-SIZE}{CAPTION}{FILENAME}
+\newcommand{\fig}[4]{
+           \vspace{0.2 in}
+           \setlength{\epsfxsize}{#2}
+           \centerline{\epsfbox{#4}}
+           \begin{center}
+           Figure \thelecnum.#1:~#3
+           \end{center}
+   }
+
+% Use these for theorems, lemmas, proofs, etc.
+\newtheorem{theorem}{Theorem}[lecnum]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{claim}[theorem]{Claim}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{definition}[theorem]{Definition}
+\newenvironment{proof}{{\bf Proof:}}{\hfill\rule{2mm}{2mm}}
+
+% Some useful equation alignment commands, borrowed from TeX
+\makeatletter
+\def\eqalign#1{\,\vcenter{\openup\jot\m@th
+ \ialign{\strut\hfil$\displaystyle{##}$&$\displaystyle{{}##}$\hfil
+     \crcr#1\crcr}}\,}
+\def\eqalignno#1{\displ@y \tabskip\@centering
+ \halign to\displaywidth{\hfil$\displaystyle{##}$\tabskip\z@skip
+   &$\displaystyle{{}##}$\hfil\tabskip\@centering
+   &\llap{$##$}\tabskip\z@skip\crcr
+   #1\crcr}}
+\def\leqalignno#1{\displ@y \tabskip\@centering
+ \halign to\displaywidth{\hfil$\displaystyle{##}$\tabskip\z@skip
+   &$\displaystyle{{}##}$\hfil\tabskip\@centering
+   &\kern-\displaywidth\rlap{$##$}\tabskip\displaywidth\crcr
+   #1\crcr}}
+\makeatother
+
+% **** IF YOU WANT TO DEFINE ADDITIONAL MACROS FOR YOURSELF, PUT THEM HERE:
+
+
+
+% Some general latex examples and examples making use of the
+% macros follow.
+
+\begin{document}
+
+%FILL IN THE RIGHT INFO.
+%\lecture{**LECTURE-NUMBER**}{**DATE**}{**LECTURER**}{**SCRIBE**}
+\lecture{10}{September 30}{Emery Berger}{Shaylyn Adams, Theodore Sudol}
+
+The collection of papers discuss in this lecture all deal with system experiences and software engineering and architecture. 
+
+\section{MIT Vs. New Jersey}
+
+\emph{The Rise of 'Worse-is-better'}  by Richard Gabriel is a widely cited and used paper. It describes two opposing design philosophies that are known as the \textbf{MIT} and the \textbf{New Jersey} (worse-is-better) approaches. \\
+The ideas behind \emph{worse-is-better} are as follows:
+\begin{itemize}
+\item[-] Strive for simple implementation (even at the risk of complicating interface)
+\item[-] Perfection is not achieved first
+\item[-] "first to market wins" (although classically not true, i.e. VHS vs. BetaMax, Linux vs. Windows)
+\end{itemize}
+
+The New Jersey approach was so named because it is the home of UNIX, C, and C++ which are examples of this design view.
+\subsection{The Canonical  Case: Multics versus UNIX}
+\begin{description}
+\item[Multics] was from MIT and General Electric and is the example of the MIT design approach. It was a groundbreaking OS with multi users, lots of API sets, lots of built in functionalities etc. Multics was formed by \underline{design-by-committee} which was a main cause of added complexity. The system was supposed to be released in 1963 but it took them until 1969/70 to finish. 
+\item[UNIX] conversely was created by just 2 men who wanted their system to be up and running as soon as possible so they could use it. Hence, UNIX was made by the end user, \underline{design-by-user}. In the process they designed the C language in order to achieve portable gaming and based it on BCPL which is simple and has one type, the byte. UNIX in the style of NJ, hid complexity via the abstraction where "everything is a file". It avoided the monolithic approach and was built out of many parts. All the basic utilities were easy to reach and right there for the user.  
+\end{description}
+Obviously when looking at systems today, UNIX is the winner in this case and out survived Multics because it was simple and easier to adopt and incorporate into systems. 
+\section{Cult-of-personality Languages}
+Many programming languages have been designed in the New Jersey style with the main goal of solving a real world problem. \textbf{Cult-of-personality languages}  refers to languages designed by a \emph{guru}, without any real regard to standard design practices.\\
+ 
+\pagebreak
+The "terrible" language of Perl is example of this. It was created to solve the performance and portability problems with using the command line to do things like \begin{verbatim} \%ls | grep -v pdf | wc -l \end{verbatim} So Perl (practical extraction report language) combines the ideas of grep and awk (a scripting language at command line) and has many ways to do everything. The main take away being that Perl provides tools to \emph{solve a specific problem}. Examples of cult-of-personality languages are:
+\begin{itemize}
+\item[-] Perl \emph{(Larry Wall)}
+\item[-] Python \emph{(Guido Rossum)}
+\item[-] Ruby \emph{(Matz)}
+\item[\~{}] PHP
+\item[\~{}] JavaScript
+\end{itemize}
+They are often known as "curly braces style" languages which enforces the idea that they are friendly environments. They all can do useful things quickly and often interoperate with C easily. Many can be written as \underline{functional} languages as well. 
+\begin{description}
+\item[Why are these languages still used?] Practical, easier, nicer. The environment for them has been established. Developed ecosystems and answered certain concerns people had in reality. 
+\end{description}
+\subsection{Functional Languages}
+\textbf{Functional} languages are the other kind of programming language ideology which fits under the MIT approach. These languages have mathematical foundations and often have a significant learning curve. Examples include:
+\begin{itemize}
+\item[-] LISP
+\item[-] Scheme \emph{(made by MIT)}
+\item[-] Haskell
+\item[-] ML
+\end{itemize}
+\textbf{Purely functional} = program cannot see state, thus manipulation of state is not allowed. \begin{verbatim}a = f(x);
+b = f(x);
+These are the same thing.
+\end{verbatim}
+Functional languages are not as popular since they were made to improve upon existing programming languages  instead of solving a real world problem. They reside in the realm of academia. Haskell research is still done today, but in the context of how Haskell applies to the real world, which is something obvious to languages like PHP, C and Python. \emph{Note: Java is the middle of these two classifications}
+\begin{description}
+\item[Scala] is a quasi functional/everything, mulitparadigm language. It is better than Java and runs on a Java virtual machine. Used by Twitter now (originally they used Ruby until they couldn't handle how very slow it is).
+\end{description}
+\section{Worse-Is-Better Recap}
+NJ style programming languages are used more in the real world than MIT styled ones. Dropbox and Google use Python. PHP is used by Facebook who made their own just-in-time compiler for it called HipHop. Clearly, worse-is-better is not necessarily pretty but it does achieve popularity. It is important to note that Gabriel presented the worse-is-better case but he was part of the Common Lisp standardization project so believed that some sort of hybrid should be sought after. \\
+\begin{table}[h]
+\centering
+\begin{tabular}{cc}
+{\Large \underline{MIT}} &{\Large \underline{New Jersey}}\\
+\textbf{Multics} (took far too long)			& 	\textbf{UNIX} (uses 1 standard interface for everything)\\
+\textbf{'MIT' Languages}	&	\textbf{Cult of Personality} \\
+			 	& 	\textbf{Plan 9*} \\
+\end{tabular}
+\end{table}
+
+\begin{footnotesize}
+*\textbf{Plan 9} was designed by Ed Wood from Bell Labs and pushed file abstraction to its limits. Introduced /proc so you can view processes as files, captures the state and memory contents. It never took off because it was made to supplant an existing, popular system and didn't solve a problem. Some of its innovations did get absorbed into UNIX though.\\
+\end{footnotesize}
+
+
+\textbf{Take home message}: Design a pretty and simple language that explicitly solves a new/real problem. It does not necessarily have to be deep and academically satisfying. 
+\section{UNIX}
+UNIX introduced many innovations and current standards for operating systems:
+\begin{itemize}
+\item symbolic links (like URLs)
+\item hard links (direct)
+\item inode pointer to file
+\item  Filesystem --\textgreater data structure stored in persistent memory
+\item everything is a file --\textgreater directory is even a file
+\item Piping and I/O redirection
+\end{itemize}
+\section{End-to-End Argument}
+Saltzer and Clark presented the \textbf{end-to-end} argument which is about pushing complexity to the 'ends', i.e. the application level. This argument is demonstrated through the development of the Internet. \underline{TCP} is an example and it provides reliable delivery at end and in sequence. Problems arise with \emph{fault tolerance} and \emph{security}. 
+\begin{description}
+\item[Packet vs. circuit] This distinction arose when deciding how the Internet should provide communication and tolerate some failures. \textbf{Circuits} were used with telephony and a fixed routing is established once between A and B. There is no overhead because there is no routing during communication. However, if the channel does down, everything is lost. This is a single point of failure and there is no fault tolerance. \textbf{Packets} on the other hand, are like the mail system and practice the end-to-end policy. They contain a source, destination, TTL (time to live) and sequence number. If one route does down or is unavailable, packets can recover. Once an acknowledgment signal, ACK, is received, the sender knows the message was delivered. 
+\end{description}
+In the same vein as packets, \underline{UDP} uses \emph{datagrams} and it is okay if some get lost. This is applicable to things like Skype, streaming media, and phone calls. 
+
+Since the Internet was made for scientists to communicate in the event of a nuclear attack (like interstate highways were 'created' to protect us against Communists), security was a low priority so there was no built in security checks. \emph{Checksums} on whole entities instead of single packets helps to ensure reliable and correct transmission. This utilizes end-to-end checking and is simple and successful since providing reliability inside can slow things down and be superfluous. \\
+
+{\normalsize \textbf{Distributed Denial of Service Attacks}}
+\begin{itemize}
+\item[-] Pretend to shop but don't actually buy anything so real customers are blocked out
+\item[-] Use 'comprised' yet normal computers
+\item[-] One solution = \emph{IPSec} which makes sure packets are not modifiable 
+\end{itemize}
+
+Security is slowly being integrated into the Internet and will be the 'next generation'.
+
+\emph{Note: Lampson's hints were not thoroughly discussed; it was noted that they do actually work and have important impacts on systems} 
+\end{document}
