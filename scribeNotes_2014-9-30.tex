@@ -115,7 +115,7 @@ The collection of papers discuss in this lecture all deal with system experience
 
 \section{MIT Vs. New Jersey}
 
-\emph{The Rise of 'Worse-is-better'}  by Richard Gabriel is a widely cited and used paper. It describes two opposing design philosophies that are known as the \textbf{MIT} and the \textbf{New Jersey} (worse-is-better) approaches. \\
+\emph{The Rise of `Worse-is-better'}  by Richard Gabriel is a widely cited and used paper. It describes two opposing design philosophies that are known as the \textbf{MIT} and the \textbf{New Jersey} (worse-is-better) approaches. \\
 The ideas behind \emph{worse-is-better} are as follows:
 \begin{itemize}
 \item Strive for simple implementation (even at the risk of complicating interface)
@@ -198,22 +198,26 @@ UNIX introduced many innovations and current standards for operating systems:
   or redirect output from stdout to a file
 \end{description}
 \section{End-to-End Argument}
-Saltzer and Clark presented the \textbf{end-to-end} argument which is about pushing complexity to the 'ends', i.e. the application level. This argument is demonstrated through the development of the Internet. \underline{TCP} is an example and it provides reliable delivery at end and in sequence. Problems arise with \emph{fault tolerance} and \emph{security}. 
-\begin{description}
-\item[Packet vs. circuit] This distinction arose when deciding how the Internet should provide communication and tolerate some failures. \textbf{Circuits} were used with telephony and a fixed routing is established once between A and B. There is no overhead because there is no routing during communication. However, if the channel does down, everything is lost. This is a single point of failure and there is no fault tolerance. \textbf{Packets} on the other hand, are like the mail system and practice the end-to-end policy. They contain a source, destination, TTL (time to live) and sequence number. If one route does down or is unavailable, packets can recover. Once an acknowledgment signal, ACK, is received, the sender knows the message was delivered. 
-\end{description}
-In the same vein as packets, \underline{UDP} uses \emph{datagrams} and it is okay if some get lost. This is applicable to things like Skype, streaming media, and phone calls. 
+Saltzer and Clark presented the \textbf{end-to-end} argument which is about pushing complexity to the `ends', i.e. the application level. This argument is demonstrated through the development of the Internet. \underline{TCP} is an example and it provides reliable delivery at end and in sequence. Problems arise with \emph{fault tolerance} and \emph{security}. 
 
-Since the Internet was made for scientists to communicate in the event of a nuclear attack (like interstate highways were 'created' to protect us against Communists), security was a low priority so there was no built in security checks. \emph{Checksums} on whole entities instead of single packets helps to ensure reliable and correct transmission. This utilizes end-to-end checking and is simple and successful since providing reliability inside can slow things down and be superfluous. \\
+\begin{description}
+\item[Packet vs. circuit] This distinction arose when deciding how the Internet should provide communication and tolerate some failures. \textbf{Circuits} were used with telephony and a fixed routing is established once between A and B. There is no overhead because there is no routing during communication. However, if the channel goes down, everything is lost. This is a single point of failure and there is no fault tolerance. \textbf{Packets} on the other hand, are like the mail system and practice the end-to-end policy. They contain a source, destination, TTL (time to live) and sequence number. If one route goes down or is unavailable, packets can recover by finding a new path. Once an acknowledgment signal, ACK, is received, the sender knows the message was delivered. 
+\end{description}
+In the same vein as packets, \underline{UDP} uses \emph{datagrams} and it is okay if some get lost. This is applicable to things like Skype, streaming media, and phone calls. It is up to the applications to decide how to handle a lost packet. For example, Skype could replace a lost packet with just silence.
+
+\textbf{Fault Tolerance:} How well a system handles errors. An example of a fault is a lost datagram or a file that was corrupted during transmission. In the end-to-end argument, the application must be able to handle the faults.
+
+
+Since the Internet was made for scientists to communicate in the event of a nuclear attack (like interstate highways were `created' to protect us against Communists), security was a low priority so there was no built in security checks. \emph{Checksums} on whole entities instead of single packets helps to ensure reliable and correct transmission. This utilizes end-to-end checking and is simple and successful since providing reliability inside can slow things down and be superfluous.
 
 {\normalsize \textbf{Distributed Denial of Service Attacks}}
 \begin{itemize}
-\item[-] Pretend to shop but don't actually buy anything so real customers are blocked out
-\item[-] Use 'comprised' yet normal computers
-\item[-] One solution = \emph{IPSec} which makes sure packets are not modifiable 
+\item Pretend to shop but don't actually buy anything so real customers are blocked out
+\item Use `comprised' yet normal computers
+\item One solution is \emph{IPSec} which makes sure packets are not modifiable 
 \end{itemize}
 
-Security is slowly being integrated into the Internet and will be the 'next generation'.
+Security is slowly being integrated into the Internet and will be the `next generation'.
 
 \emph{Note: Lampson's hints were not thoroughly discussed; it was noted that they do actually work and have important impacts on systems} 
 \end{document}
