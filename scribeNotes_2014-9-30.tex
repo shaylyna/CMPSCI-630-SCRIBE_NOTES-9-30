@@ -118,9 +118,9 @@ The collection of papers discuss in this lecture all deal with system experience
 \emph{The Rise of 'Worse-is-better'}  by Richard Gabriel is a widely cited and used paper. It describes two opposing design philosophies that are known as the \textbf{MIT} and the \textbf{New Jersey} (worse-is-better) approaches. \\
 The ideas behind \emph{worse-is-better} are as follows:
 \begin{itemize}
-\item[-] Strive for simple implementation (even at the risk of complicating interface)
-\item[-] Perfection is not achieved first
-\item[-] "first to market wins" (although classically not true, i.e. VHS vs. BetaMax, Linux vs. Windows)
+\item Strive for simple implementation (even at the risk of complicating interface)
+\item Perfection is not achieved first
+\item "first to market wins" (although classically not true, i.e. VHS vs. BetaMax, Linux vs. Windows)
 \end{itemize}
 
 The New Jersey approach was so named because it is the home of UNIX, C, and C++ which are examples of this design view.
@@ -136,11 +136,11 @@ Many programming languages have been designed in the New Jersey style with the m
 \pagebreak
 The "terrible" language of Perl is example of this. It was created to solve the performance and portability problems with using the command line to do things like \begin{verbatim} \%ls | grep -v pdf | wc -l \end{verbatim} So Perl (practical extraction report language) combines the ideas of grep and awk (a scripting language at command line) and has many ways to do everything. The main take away being that Perl provides tools to \emph{solve a specific problem}. Examples of cult-of-personality languages are:
 \begin{itemize}
-\item[-] Perl \emph{(Larry Wall)}
-\item[-] Python \emph{(Guido Rossum)}
-\item[-] Ruby \emph{(Matz)}
-\item[\~{}] PHP
-\item[\~{}] JavaScript
+\item Perl \emph{(Larry Wall)}
+\item Python \emph{(Guido van Rossum)}
+\item Ruby \emph{(Yukihiro ``Matz'' Matsumoto)}
+\item PHP \emph{(Rasmus Lerdorf, later became design-by-committee)}
+\item JavaScript \emph{(Brendan Eich)}
 \end{itemize}
 They are often known as "curly braces style" languages which enforces the idea that they are friendly environments. They all can do useful things quickly and often interoperate with C easily. Many can be written as \underline{functional} languages as well. 
 \begin{description}
@@ -149,10 +149,10 @@ They are often known as "curly braces style" languages which enforces the idea t
 \subsection{Functional Languages}
 \textbf{Functional} languages are the other kind of programming language ideology which fits under the MIT approach. These languages have mathematical foundations and often have a significant learning curve. Examples include:
 \begin{itemize}
-\item[-] LISP
-\item[-] Scheme \emph{(made by MIT)}
-\item[-] Haskell
-\item[-] ML
+\item LISP
+\item Scheme \emph{(made by MIT)}
+\item Haskell
+\item ML
 \end{itemize}
 \textbf{Purely functional} = program cannot see state, thus manipulation of state is not allowed. \begin{verbatim}a = f(x);
 b = f(x);
@@ -160,7 +160,10 @@ These are the same thing.
 \end{verbatim}
 Functional languages are not as popular since they were made to improve upon existing programming languages  instead of solving a real world problem. They reside in the realm of academia. Haskell research is still done today, but in the context of how Haskell applies to the real world, which is something obvious to languages like PHP, C and Python. \emph{Note: Java is the middle of these two classifications}
 \begin{description}
-\item[Scala] is a quasi functional/everything, mulitparadigm language. It is better than Java and runs on a Java virtual machine. Used by Twitter now (originally they used Ruby until they couldn't handle how very slow it is).
+\item[Scala] is a quasi functional/everything, mulitparadigm language. It is
+  better than Java and runs on a Java virtual machine. Used by Twitter as a
+  replacement for their original Ruby backend, which could not scale to the
+  demands on their system.
 \end{description}
 \section{Worse-Is-Better Recap}
 NJ style programming languages are used more in the real world than MIT styled ones. Dropbox and Google use Python. PHP is used by Facebook who made their own just-in-time compiler for it called HipHop. Clearly, worse-is-better is not necessarily pretty but it does achieve popularity. It is important to note that Gabriel presented the worse-is-better case but he was part of the Common Lisp standardization project so believed that some sort of hybrid should be sought after. \\
