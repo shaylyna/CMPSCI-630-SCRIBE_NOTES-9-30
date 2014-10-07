@@ -185,14 +185,18 @@ NJ style programming languages are used more in the real world than MIT styled o
 \textbf{Take home message}: Design a pretty and simple language that explicitly solves a new/real problem. It does not necessarily have to be deep and academically satisfying. 
 \section{UNIX}
 UNIX introduced many innovations and current standards for operating systems:
-\begin{itemize}
-\item symbolic links (like URLs)
-\item hard links (direct)
-\item inode pointer to file
-\item  Filesystem --\textgreater data structure stored in persistent memory
-\item everything is a file --\textgreater directory is even a file
-\item Piping and I/O redirection
-\end{itemize}
+\begin{description}
+\item[Symbolic links:] Labels that point to any file or directory, target may be
+  nonexistent. Essentially alias for target.
+\item[Hard links:] Direct link to a file, must be on same volume. Essentially
+  alias for target data.
+\item[Inode:] Filesystem index, stores attributes and disk location of file
+\item[Filesystem:] Data structure stored in persistent memory
+\item[Everything is a file:] Directories, devices, network sockets,
+  processes\ldots
+\item[Piping and I/O redirection:] Feed output of command into input of another,
+  or redirect output from stdout to a file
+\end{description}
 \section{End-to-End Argument}
 Saltzer and Clark presented the \textbf{end-to-end} argument which is about pushing complexity to the 'ends', i.e. the application level. This argument is demonstrated through the development of the Internet. \underline{TCP} is an example and it provides reliable delivery at end and in sequence. Problems arise with \emph{fault tolerance} and \emph{security}. 
 \begin{description}
